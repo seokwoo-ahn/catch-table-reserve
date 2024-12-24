@@ -95,15 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('예약이 성공적으로 완료되었습니다!');
                 return;
             } else {
-                // 예약 다시 시도
-                console.log('예약 다시 시도:', response.message);
-                if (response.idx !== undefined) {
-                    runMacro(startDate, endDate, startTime, endTime, response.idx);
-                } else {
-                    isMacroRunning = false;
-                    alert('날짜 범위 설정이 잘못되었습니다. 매크로가 중지되었습니다.');
-                    return;
-                }
+                alert("예약에 실패했습니다.", response.message);
+                return 
             }
         });
     }

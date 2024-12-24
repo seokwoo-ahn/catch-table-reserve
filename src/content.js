@@ -76,37 +76,39 @@ function makeReservation(startDate, endDate, startTime, endTime, idx, sendRespon
             button.click();
             dateClicked = true;
 
-            // 응답 대기를 위해 0.5초에서 1초 사이의 랜덤한 시간을 단순대기
-            const delay = Math.floor(Math.random() * 500) + 500;
-            setTimeout(() => {}, delay);
+            // background.js로 메시지 보내기
+            chrome.runtime.sendMessage({ action: 'updateButton' }, (response) => {
+                if (response.status === 'Button updated') {
+                    console.log('Button._1ltqxco1r has been updated');
+                    // 시간 범위 내의 버튼 클릭하는 로직
+                }
+                // const timeButtons = document.querySelectorAll('button._1ltqxco1r');
 
-            // 시간 범위 내의 버튼 클릭하는 로직
-            // const timeButtons = document.querySelectorAll('button._1ltqxco1r');
-
-            // for (let j = 0; j < timeButtons.length; j++) {
-            //     const timeButton = timeButtons[j];
-            //     const buttonText = timeButton.querySelector('.time').textContent.trim();
-            //     const [period, time] = buttonText.split(' ');
-            //     const [buttonHour, buttonMinute] = time.split(':').map(Number);
-            //     const adjustedButtonHour = period === '오후' && buttonHour !== 12 ? buttonHour + 12 : buttonHour;
-            //     const buttonTime = adjustedButtonHour * 60 + buttonMinute;
-
-            //     const [startPeriod, startTimeValue] = startTime.split(' ');
-            //     const [startHour, startMinute] = startTimeValue.split(':').map(Number);
-            //     const adjustedStartHour = startPeriod === '오후' && startHour !== 12 ? startHour + 12 : startHour;
-            //     const startTimeMinutes = adjustedStartHour * 60 + startMinute;
-
-            //     const [endPeriod, endTimeValue] = endTime.split(' ');
-            //     const [endHour, endMinute] = endTimeValue.split(':').map(Number);
-            //     const adjustedEndHour = endPeriod === '오후' && endHour !== 12 ? endHour + 12 : endHour;
-            //     const endTimeMinutes = adjustedEndHour * 60 + endMinute;
-
-            //     if (buttonTime >= startTimeMinutes && buttonTime <= endTimeMinutes) {
-            //         timeButton.click();
-            //         sendResponse({ success: true });
-            //         return;
-            //     }
-            // }
+                // for (let j = 0; j < timeButtons.length; j++) {
+                //     const timeButton = timeButtons[j];
+                //     const buttonText = timeButton.querySelector('.time').textContent.trim();
+                //     const [period, time] = buttonText.split(' ');
+                //     const [buttonHour, buttonMinute] = time.split(':').map(Number);
+                //     const adjustedButtonHour = period === '오후' && buttonHour !== 12 ? buttonHour + 12 : buttonHour;
+                //     const buttonTime = adjustedButtonHour * 60 + buttonMinute;
+    
+                //     const [startPeriod, startTimeValue] = startTime.split(' ');
+                //     const [startHour, startMinute] = startTimeValue.split(':').map(Number);
+                //     const adjustedStartHour = startPeriod === '오후' && startHour !== 12 ? startHour + 12 : startHour;
+                //     const startTimeMinutes = adjustedStartHour * 60 + startMinute;
+    
+                //     const [endPeriod, endTimeValue] = endTime.split(' ');
+                //     const [endHour, endMinute] = endTimeValue.split(':').map(Number);
+                //     const adjustedEndHour = endPeriod === '오후' && endHour !== 12 ? endHour + 12 : endHour;
+                //     const endTimeMinutes = adjustedEndHour * 60 + endMinute;
+    
+                //     if (buttonTime >= startTimeMinutes && buttonTime <= endTimeMinutes) {
+                //         timeButton.click();
+                //         sendResponse({ success: true });
+                //         return;
+                //     }
+                // }
+            });
         }
     }
 

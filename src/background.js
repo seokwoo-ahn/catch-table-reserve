@@ -7,19 +7,25 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log("Message received in background:", message);
 
+    if (message.action === 'updateButton') {
+        sendResponse({ status: 'Button updated' });
+    }
+
     // 현재 활성 탭 가져오기
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.query({ url: "https://app.catchtable.co.kr/*", active: true, currentWindow: true }, (tabs) => {
         if (tabs.length > 0) {
             chrome.tabs.sendMessage(tabs[0].id, message, (response) => {
                 if (chrome.runtime.lastError) {
                     console.error("Error sending message to content script:", chrome.runtime.lastError.message);
+                    return;
                 } else {
                     console.log("Response from content script:", response);
                     sendResponse(response); // 팝업으로 최종 응답 전달
                 }
             });
         } else {
-            console.error("No active tab found.");
+            console.error("No active catch table tab found.");
+            return;
         }
     });
 
