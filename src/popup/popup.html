@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <title>Catchtable 예약</title>
+</head>
+<body>
+    <div class="popup-container">
+        <h1>예약하기</h1>
+        <form id="reservation-form">
+            <label for="start-date">시작 날짜:</label>
+            <input type="date" id="start-date" name="start-date" required>
+            
+            <label for="end-date">종료 날짜:</label>
+            <input type="date" id="end-date" name="end-date" required>
+            
+            <label for="start-time">시작 시간:</label>
+            <input type="time" id="start-time" name="start-time" required>
+            
+            <label for="end-time">종료 시간:</label>
+            <input type="time" id="end-time" name="end-time" required>
+        </form>
+        <button id="start-macro">매크로 시작</button>
+        <button id="stop-macro">매크로 중지</button>
+        <button id="select-next-day">다음날짜 선택</button>
+        <button id="select-prev-day">전날짜 선택</button>
+        <div id="message"></div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

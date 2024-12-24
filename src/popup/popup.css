@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    width: 300px; /* 팝업의 너비를 설정 */
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="date"],
+input[type="time"] {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 90%; /* 입력 필드의 너비를 설정 */
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    width: 90%; /* 버튼의 너비를 설정 */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#message {
+    margin-top: 10px;
+    text-align: center;
+    color: red;
+}
