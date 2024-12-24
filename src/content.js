@@ -76,10 +76,9 @@ function makeReservation(startDate, endDate, startTime, endTime, idx, sendRespon
             button.click();
             dateClicked = true;
 
-            // 응답 대기를 위해 0.2초에서 0.4초 사이의 랜덤한 시간을 단순대기
-            const randomWaitTime = Math.random() * 200 + 200;
-            setTimeout(() => {
-            }, randomWaitTime)
+            // 응답 대기를 위해 0.5초에서 1초 사이의 랜덤한 시간을 단순대기
+            const delay = Math.floor(Math.random() * 500) + 500;
+            setTimeout(() => {}, delay);
 
             // 시간 범위 내의 버튼 클릭하는 로직
             // const timeButtons = document.querySelectorAll('button._1ltqxco1r');

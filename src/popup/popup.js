@@ -10,6 +10,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let isMacroRunning = false;
 
+    // 저장된 값을 불러오는 함수
+    function loadSavedValues() {
+        startDateInput.value = localStorage.getItem('startDate') || '';
+        endDateInput.value = localStorage.getItem('endDate') || '';
+        startTimeInput.value = localStorage.getItem('startTime') || '';
+        endTimeInput.value = localStorage.getItem('endTime') || '';
+    }
+
+    // 값을 저장하는 함수
+    function saveValues() {
+        localStorage.setItem('startDate', startDateInput.value);
+        localStorage.setItem('endDate', endDateInput.value);
+        localStorage.setItem('startTime', startTimeInput.value);
+        localStorage.setItem('endTime', endTimeInput.value);
+    }
+
+    // 팝업이 로드될 때 저장된 값을 불러옴
+    loadSavedValues();
+
     startMacroButton.addEventListener('click', function() {
         // 이미 매크로가 실행중이라면 무시
         if (isMacroRunning) {
@@ -25,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (startDate && endDate && startTime && endTime) {
             isMacroRunning = true;
             console.log('매크로가 시작되었습니다.');
+            saveValues(); // 값을 저장
             runMacro(startDate, endDate, startTime, endTime, 0);
         } else {
             alert('날짜와 시간을 입력해 주세요.');
